@@ -227,15 +227,15 @@ main() {
 	eval set -- "$tmp_getops"
 
 	# business time!!
-	local lock type lns username password device test_url
+	local lock type lns username password config directory device test_url
 	while true ; do
 		case "$1" in
 			-h|--help) usage;;
 			-l|--lock) lock=yes; shift 1;;
 			-t|--type) type=$2; shift 2;;
 			-H|--host) lns="$2"; shift 2;;
-			-u|--username) username="$2"; shift 1;;
-			-p|--password) password="$2"; shift 1;;
+			-u|--username) username="$2"; shift 2;;
+			-p|--password) password="$2"; shift 2;;
 			-c|--config) config="$2"; shift 2;;
 			-D|--directory) directory="$2"; shift 2;;
 			-d|--device) device="$2"; shift 2;;
