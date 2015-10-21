@@ -208,6 +208,8 @@ Options:
   -h, --hostname             Hostname to connect to.
   -u, --username             Username to use with VPN.
   -p, --password             Password to use with VPN.
+  -c, --config				 Configuration file to use with VPN.
+  -D, --directory			 Directory containing VPN configuration files.
   -l, --lock                 Use global lock to avoid running check_vpn more
                              then once at the same time.
   -d, --device               Device to use, can be a specific device (tunX,
@@ -234,6 +236,8 @@ main() {
 			-H|--host) lns="$2"; shift 2;;
 			-u|--username) username="$2"; shift 2;;
 			-p|--password) password="$2"; shift 2;;
+			-c|--config) config="$2"; shift 2;;
+			-D|--directory) directory="$2"; shift 2;;
 			-d|--device) device="$2"; shift 2;;
 			-U|--url) test_url="$2"; shift 2;;
 			--) shift; break;;
@@ -241,8 +245,8 @@ main() {
 		esac
 	done
 	[ x"$type" = x ] && usage
-	[ x"$username" = x ] && usage
-	[ x"$password" = x ] && usage
+	# [ x"$username" = x ] && usage
+	# [ x"$password" = x ] && usage
 	[ x"$test_url" = x ] && test_url=$DEFAULT_TEST_URL
 
 	# must run as root
